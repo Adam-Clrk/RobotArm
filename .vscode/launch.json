@@ -9,7 +9,12 @@
       "type": "python",
       "request": "launch",
       "program": "${file}",
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "env": {
+        "DISPLAY": "localhost:11.0"
+        // x11 tunnelling when debugging in vs code
+        // (must run ssh with x tunnel separately)
+      }
     }
   ]
 }

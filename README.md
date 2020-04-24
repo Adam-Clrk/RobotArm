@@ -1,3 +1,3 @@
-# Robot arm project
+# RobotArm project
 
-see [notebook/RobotArm.ipynb](notebook/RobotArm.ipynb) for my full notes
+Notes: [@Adam-Clrk/RobotArm-notebook](https://github.com/Adam-Clrk/RobotArm-notebook)

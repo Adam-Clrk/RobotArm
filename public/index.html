@@ -3,7 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Arm websocket control</title>
+  <style>
+    html {
+      font-family: sans-serif;
+    }
+    input {
+      height: 3em;
+    }
+    #status {
+      margin-left: 1em;
+      display: inline-block;
+      border: 1px solid black;
+      padding: 1em 2em;
+    }
+    #status span {
+      margin: 0.1em;
+    }
+    #stopbutton {
+      display: block;
+      font-size: 1.3em;
+      padding: 0.7em 1em;
+      margin-block-end: 1em;
+    }
+  </style>
 </head>
 <body>
   <input type="range" min="-1" max="1" value="0" class="slider" id="base">
@@ -11,6 +34,11 @@
   <input type="range" min="-1" max="1" value="0" class="slider" id="elbow">
   <input type="range" min="-1" max="1" value="0" class="slider" id="wrist">
   <input type="range" min="-1" max="1" value="0" class="slider" id="grip">
+  <button id="stopbutton">stop</button>
+  <div id="status">
+    <span></span>
+    <span></span>
+  </div>
   <script src="./ws.js"></script>
   <script>
     // var ws = new WebSocket("ws://localhost:8765");
@@ -20,6 +48,11 @@
       let val = parseInt(event.target.value)
       if (val == -1) val = 2
       ws.send(JSON.stringify({motor: event.target.id,value: val}))
+    })
+    document.addEventListener('click', (event) => {
+      if (event.target.id == 'stopbutton') {
+        ws.send(JSON.stringify({motor: 'all',value: 0}))
+      }
     })
   </script>
 </body>
