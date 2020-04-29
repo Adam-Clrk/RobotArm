@@ -1,3 +1,0 @@
-[submodule "pyusb"]
-	path = pyusb
-	url = ./pyusb/
